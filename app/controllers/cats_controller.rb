@@ -33,7 +33,7 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params)
 
     if @cat.save
-      redirect_to @cat, notice: "ねこを登録しました。"
+      flash.now.notice = "ねこを登録しました。"
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class CatsController < ApplicationController
   # PATCH/PUT /cats/1
   def update
     if @cat.update(cat_params)
-      redirect_to @cat, notice: "ねこを更新しました。", status: :see_other
+      flash.now.notice = "ねこを更新しました。"
     else
       render :edit, status: :unprocessable_entity
     end
